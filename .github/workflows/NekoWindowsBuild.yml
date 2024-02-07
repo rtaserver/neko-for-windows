@@ -53,14 +53,14 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         path: |
-          NekoForWindows/bin/Release/NekoForWindows.exe
+          NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
         name: NekoForWindows_release_${{ github.head_ref || github.ref_name }}_${{ steps.date.outputs.date }}
 
     - name: Upload release asset
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./NekoForWindows/bin/Release/NekoForWindows.exe
+        file: ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
         overwrite: true
         tag: ${{ inputs.version }}
         file_glob: true
