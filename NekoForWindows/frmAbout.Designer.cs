@@ -89,7 +89,6 @@
             // tmRainbow
             // 
             this.tmRainbow.Enabled = true;
-            this.tmRainbow.Interval = 10;
             this.tmRainbow.Tick += new System.EventHandler(this.tmRainbow_Tick);
             // 
             // frmAbout
@@ -102,6 +101,7 @@
             this.Controls.Add(this.siticoneShapes1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAbout";
+            this.Load += new System.EventHandler(this.frmAbout_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

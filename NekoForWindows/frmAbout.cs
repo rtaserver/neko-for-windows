@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,10 +31,6 @@ namespace NekoForWindows
             //btnCoreVersion.Text = version;
         }
 
-        private void frmAbout_Load(object sender, EventArgs e)
-        {
-            Module.RaibowText(lblMe);
-        }
 
         private void btnDBAI_Click(object sender, EventArgs e)
         {
@@ -62,6 +60,10 @@ namespace NekoForWindows
         private void tmRainbow_Tick(object sender, EventArgs e)
         {
             Module.RaibowText(lblMe);
+        }
+
+        private void frmAbout_Load(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -6,7 +6,7 @@ on:
         version:
           description: 'Neko version'
           required: true
-          default: '1.0-0-beta_Windows'
+          default: '1.0.0-beta'
           type: string
         changelog:
           description: 'Changelog'
@@ -46,6 +46,9 @@ jobs:
     - name: Build Solution
       run: msbuild.exe NekoForWindows.sln /p:Configuration=Release /p:PostBuildEventUseInBuild=false
 
+    - name: Rename Neko
+      run: mv ./NekoForWindows/bin/Release/NekoForWindows.exe ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
+
     - name: Upload Artefact Release
       uses: actions/upload-artifact@v3
       with:
@@ -62,12 +65,12 @@ jobs:
         tag: ${{ inputs.version }}
         file_glob: true
         body: |
-          ## NEKO ${{ inputs.version }}
-          Simple Clash TUN based Proxy
-          ## Information
-          - Changelog : 
-            - ${{ inputs.changelog }}
-          - Default Config : 
-            - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
-          ## Dependency Requirement
-          - ` Net Framework ` (For Running this Application)
+         ## NEKO ${{ inputs.version }} 
+         Simple Clash TUN based Proxy
+         ## Information
+         - Changelog : 
+           - ${{ inputs.changelog }}
+         - Default Config : 
+           - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
+         ## Dependency Requirement
+         - ` Net Framework ` (For Running this Application)
