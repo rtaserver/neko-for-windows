@@ -55,19 +55,17 @@ jobs:
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: NekoForWindows/bin/Release/NekoForWindows.exe
+        file: ./NekoForWindows/bin/Release/NekoForWindows.exe
         overwrite: true
         tag: ${{ inputs.version }}
         file_glob: true
         body: |
-            # NEKO ${{ inputs.version }}
-            Simple Clash TUN based Proxy
-            ### Information
-            - Changelog : 
-              - ${{ inputs.changelog }}
-            - Default Config : 
-              - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
-            ### Dependency Requirement
-            - ` Net Framework ` (For Running this Application)
-            
-            ### Please Install with normal Connectivity
+          # NEKO ${{ inputs.version }}
+          Simple Clash TUN based Proxy
+          ### Information
+          - Changelog : 
+            - ${{ inputs.changelog }}
+          - Default Config : 
+            - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
+          ### Dependency Requirement
+          - ` Net Framework ` (For Running this Application)
