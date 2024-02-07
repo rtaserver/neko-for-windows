@@ -1,0 +1,73 @@
+name: Build
+
+on:
+    workflow_dispatch:
+      inputs:
+        version:
+          description: 'Neko version'
+          required: true
+          default: '1.0-0-beta_Windows'
+          type: string
+        changelog:
+          description: 'Changelog'
+          required: true
+          default: ''
+          type: string
+
+jobs:
+  build:
+    name: Build
+    runs-on: windows-2022
+
+    steps:
+    - name: Get current date
+      id: date
+      run: echo "date=$(date +'%Y-%m-%d_%H%M%S')" >> $env:GITHUB_OUTPUT
+    - uses: actions/checkout@v3
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
+
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
+
+    - name: Restore Packages
+      run: nuget restore NekoForWindows.sln
+
+    - name: Change Build Version
+      run: |
+        sed -i 's/v1\.0-beta/${{ inputs.version }}/g' NekoForWindows/Program.cs
+
+    - name: Build Solution
+      run: msbuild.exe NekoForWindows.sln /p:Configuration=Release /p:PostBuildEventUseInBuild=false
+
+    - name: Upload Artefact Release
+      uses: actions/upload-artifact@v3
+      with:
+        path: |
+          NekoForWindows/bin/Release/NekoForWindows.exe
+        name: NekoForWindows_release_${{ github.head_ref || github.ref_name }}_${{ steps.date.outputs.date }}
+
+    - name: Upload release asset
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: NekoForWindows/bin/Release/NekoForWindows.exe
+        overwrite: true
+        tag: ${{ inputs.version }}
+        file_glob: true
+        body: |
+            # NEKO ${{ inputs.version }}
+            Simple Clash TUN based Proxy
+            ### Information
+            - Changelog : 
+              - ${{ inputs.changelog }}
+            - Default Config : 
+              - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
+            ### Dependency Requirement
+            - ` Net Framework ` (For Running this Application)
+            
+            ### Please Install with normal Connectivity
