@@ -1,0 +1,6 @@
+.vs/*
+NekoForWindows/bin/*
+!NekoForWindows/bin/Debug
+!NekoForWindows/bin/Release
+NekoForWindows/bin/Release/*
+NekoForWindows/obj/*

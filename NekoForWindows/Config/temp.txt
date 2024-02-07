@@ -1,0 +1,3 @@
+FirstRun = true
+ClientVersion = v1.0
+CoreVersion = v1.1
