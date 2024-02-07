@@ -11,7 +11,7 @@ namespace NekoForWindows
 {
     internal static class Program
     {
-        static string Version = "v1.0-beta";
+        static string Version = "v1.1.1-beta";
         static string CoreVersion = "v1.18.0";
         static internal string AppVersion()
         {
@@ -44,11 +44,11 @@ namespace NekoForWindows
             {
                 Module.CopyResourceToFile("NekoForWindows.Config.temp.txt", ReadWriteConfig.Temp);
                 ReadWriteConfig.ADDUPDATE(config, "FirstRun", "true");
+                ReadWriteConfig.ADDUPDATE(config, "ClientVersion", Version);
+                ReadWriteConfig.ADDUPDATE(config, "CoreVersion", CoreVersion);
                 ReadWriteConfig.WriteConfigFile(ReadWriteConfig.Temp, config);
             }
 
-            ReadWriteConfig.ADDUPDATE(config, "ClientVersion", Version);
-            ReadWriteConfig.ADDUPDATE(config, "CoreVersion", CoreVersion);
             ReadWriteConfig.WriteConfigFile(ReadWriteConfig.Temp, config);
 
             Application.EnableVisualStyles();

@@ -136,11 +136,11 @@ namespace NekoForWindows
                 Dictionary<string, string> config = ReadWriteConfig.ReadConfigFile(ReadWriteConfig.Temp);
                 //CoreLog.Items.Clear();
                 // SET HTTP PROXY
-                NekoLog.Items.Add($"[ {CrtTime} ] Set HTTP Proxy");
-                RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-                registry.SetValue("ProxyEnable", 1);
-                registry.SetValue("ProxyServer", "127.0.0.1:7890");
-                NekoLog.Items.Add($"[ {CrtTime} ] HTTP Proxy Sucess");
+                //NekoLog.Items.Add($"[ {CrtTime} ] Set HTTP Proxy");
+                //RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+                //registry.SetValue("ProxyEnable", 1);
+                //registry.SetValue("ProxyServer", "127.0.0.1:7890");
+                //NekoLog.Items.Add($"[ {CrtTime} ] HTTP Proxy Sucess");
 
                 // START CORE
                 {
@@ -191,10 +191,10 @@ namespace NekoForWindows
                 }
 
                 // SET HTTP PROXY TO DEFAULT
-                NekoLog.Items.Add($"[ {CrtTime} ] Set HTTP Proxy To Default");
-                RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-                registry.SetValue("ProxyEnable", 0);
-                registry.SetValue("ProxyServer", "");
+                //NekoLog.Items.Add($"[ {CrtTime} ] Set HTTP Proxy To Default");
+                //RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
+                //registry.SetValue("ProxyEnable", 0);
+                //registry.SetValue("ProxyServer", "");
 
                 NekoLog.Items.Add($"[ {CrtTime} ] Stop Neko Sucess");
                 CoreLog.Items.Clear();

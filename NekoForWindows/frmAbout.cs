@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -27,9 +28,10 @@ namespace NekoForWindows
         {
             //btnCoreVersion.Text = version;
         }
+
         private void frmAbout_Load(object sender, EventArgs e)
         {
-
+            Module.RaibowText(lblMe);
         }
 
         private void btnDBAI_Click(object sender, EventArgs e)
@@ -55,6 +57,11 @@ namespace NekoForWindows
         private void btnMetaCubeX_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/MetaCubeX");
+        }
+
+        private void tmRainbow_Tick(object sender, EventArgs e)
+        {
+            Module.RaibowText(lblMe);
         }
     }
 }

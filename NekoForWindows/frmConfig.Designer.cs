@@ -57,6 +57,8 @@
             this.siticoneShapes2 = new Siticone.Desktop.UI.WinForms.SiticoneShapes();
             this.label11 = new System.Windows.Forms.Label();
             this.tmrList = new System.Windows.Forms.Timer(this.components);
+            this.btnHelpConfig = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.btnRestore = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.SuspendLayout();
             // 
             // cbConfig
@@ -310,7 +312,7 @@
             // 
             this.txtPort.BorderColor = System.Drawing.Color.Transparent;
             this.txtPort.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPort.DefaultText = "Yo";
+            this.txtPort.DefaultText = "";
             this.txtPort.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtPort.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtPort.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -535,12 +537,50 @@
             this.tmrList.Enabled = true;
             this.tmrList.Tick += new System.EventHandler(this.tmrList_Tick);
             // 
+            // btnHelpConfig
+            // 
+            this.btnHelpConfig.Animated = true;
+            this.btnHelpConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.btnHelpConfig.BorderColor = System.Drawing.Color.Red;
+            this.btnHelpConfig.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnHelpConfig.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnHelpConfig.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnHelpConfig.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnHelpConfig.FillColor = System.Drawing.Color.Crimson;
+            this.btnHelpConfig.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnHelpConfig.ForeColor = System.Drawing.Color.White;
+            this.btnHelpConfig.Location = new System.Drawing.Point(171, 468);
+            this.btnHelpConfig.Name = "btnHelpConfig";
+            this.btnHelpConfig.Size = new System.Drawing.Size(461, 26);
+            this.btnHelpConfig.TabIndex = 62;
+            this.btnHelpConfig.Text = "CLICK ME IF YOUR CONFIG NOT CONECTED TO INTERNET";
+            // 
+            // btnRestore
+            // 
+            this.btnRestore.Animated = true;
+            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.btnRestore.BorderColor = System.Drawing.Color.Red;
+            this.btnRestore.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnRestore.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnRestore.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnRestore.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnRestore.FillColor = System.Drawing.Color.Crimson;
+            this.btnRestore.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnRestore.ForeColor = System.Drawing.Color.White;
+            this.btnRestore.Location = new System.Drawing.Point(634, 468);
+            this.btnRestore.Name = "btnRestore";
+            this.btnRestore.Size = new System.Drawing.Size(461, 26);
+            this.btnRestore.TabIndex = 63;
+            this.btnRestore.Text = "RESTORE TO DEFAULT CONFIG";
+            // 
             // frmConfig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(73)))), ((int)(((byte)(99)))));
             this.ClientSize = new System.Drawing.Size(1267, 517);
+            this.Controls.Add(this.btnRestore);
+            this.Controls.Add(this.btnHelpConfig);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -606,5 +646,7 @@
         private Siticone.Desktop.UI.WinForms.SiticoneShapes siticoneShapes2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Timer tmrList;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnHelpConfig;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnRestore;
     }
 }

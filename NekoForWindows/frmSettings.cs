@@ -267,10 +267,11 @@ namespace NekoForWindows
             {
                 try
                 {
-                    Dictionary<string, string> config = ReadWriteConfig.ReadConfigFile(ReadWriteConfig.Temp);
+                    
                     string targetFilePath = Path.Combine(Neko.CorePath, "mihomo.zip");
                     if (File.Exists(targetFilePath))
                     {
+                        Dictionary<string, string> config = ReadWriteConfig.ReadConfigFile(ReadWriteConfig.Temp);
                         MessageBox.Show("Update Core complete!");
                         if (File.Exists(Path.Combine(Neko.CorePath, "mihomo.exe")))
                         {
@@ -300,6 +301,7 @@ namespace NekoForWindows
 
                         if (File.Exists(tempFile))
                         {
+                            Dictionary<string, string> config = ReadWriteConfig.ReadConfigFile(ReadWriteConfig.Temp);
                             MessageBox.Show("Update Client complete!");
                             // STOP NEKO WHEN STARTED
                             frmHome home = new frmHome();

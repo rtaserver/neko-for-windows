@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using YamlDotNet.Core;
@@ -302,7 +304,7 @@ namespace NekoForWindows
             }
         }
 
-        public static string ParseChangelog(string log)
+        public string ParseChangelog(string log)
         {
             WebClient client = new WebClient
             {
@@ -322,7 +324,37 @@ namespace NekoForWindows
                 return string.Empty;
             }
 
+            if (changelogText.Count == 0) return string.Empty;
+
+            int markVersion = 0;
+            for (int d = 0; d < changelogText.Count; d++)
+            {
+                if (changelogText[d].Contains($"## NEKO [{Program.AppVersion()}]"))
+                {
+                    markVersion = d;
+                    break;
+                }
+                else continue;
+            }
+
+            changelogText.RemoveRange(markVersion, changelogText.Count - markVersion);
+
+            if (changelogText.Count <= 0)
+            {
+                MessageBox.Show("You already have the latest version!", "Neko For Windows", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return string.Empty;
+            }
+
             return string.Join(Environment.NewLine, changelogText).Replace("##", "➤");
+        }
+
+        static int colorIndex = 0;
+        public static void RaibowText(Label label)
+        {
+            
+            Color[] rainbowColors = { Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Blue, Color.Indigo, Color.Violet };
+            label.ForeColor = rainbowColors[colorIndex];
+            colorIndex = (colorIndex + 1) % rainbowColors.Length;
         }
 
     }
