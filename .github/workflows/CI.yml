@@ -1,56 +1,29 @@
-name: CI
+name: Build
 
 on:
-  push:
-    branches:
-      - '**'
   pull_request:
     branches:
-      - '**'
+      - main
 
 jobs:
-  build-debug:
-    name: Build Debug
+  build:
+    name: Build
     runs-on: windows-2022
 
     steps:
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%d_%H%M%S')" >> $env:GITHUB_OUTPUT
+    - uses: actions/checkout@v3
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1.3
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
 
-      - name: Build Debug
-        run: |
-          msbuild NekoForWindows.sln /p:Configuration=Debug /p:PostBuildEventUseInBuild=false
+    - name: Setup NuGet
+      uses: nuget/setup-nuget@v1
 
-      - name: Upload Debug
-        uses: actions/upload-artifact@v3
-        with:
-          path: |
-           NekoForWindows/bin/Debug/NekoForWindows.exe
-          name: NekoForWindows_debug_${{ github.head_ref || github.ref_name }}_${{ steps.date.outputs.date }}
+    - name: Navigate to Workspace
+      run: cd $GITHUB_WORKSPACE
 
-  build-release:
-    name: Build Release
-    runs-on: windows-2022
+    - name: Restore Packages
+      run: nuget restore NekoForWindows.sln
 
-    steps:
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%d_%H%M%S')" >> $env:GITHUB_OUTPUT
-
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1.3
-
-      - name: Build Release
-        run: |
-          msbuild NekoForWindows.sln /p:Configuration=Release /p:PostBuildEventUseInBuild=false
-
-      - name: Upload Release
-        uses: actions/upload-artifact@v3
-        with:
-          path: |
-           NekoForWindows/bin/Release/NekoForWindows.exe
-          name: NekoForWindows_release_${{ github.head_ref || github.ref_name }}_${{ steps.date.outputs.date }}
+    - name: Build Solution
+      run: msbuild.exe NekoForWindows.sln
