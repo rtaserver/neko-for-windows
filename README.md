@@ -1,2 +1,2 @@
 # neko-for-windows
-Based Mihomo | MetaCubeX
+Based Mihomo | MetaCubeX | Neko
