@@ -13,10 +13,12 @@ on:
           required: true
           default: ''
           type: string
-
-jobs:
+  
+jobs: 
   build:
-    name: Build
+    permissions:
+      contents: write
+    name: Build Neko
     runs-on: windows-2022
 
     steps:
