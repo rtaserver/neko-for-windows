@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfig));
             this.cbConfig = new Siticone.Desktop.UI.WinForms.SiticoneComboBox();
             this.lblInfo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,7 +59,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.tmrList = new System.Windows.Forms.Timer(this.components);
             this.btnHelpConfig = new Siticone.Desktop.UI.WinForms.SiticoneButton();
-            this.btnRestore = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.SHelp = new Siticone.Desktop.UI.WinForms.SiticoneShapes();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cbConfig
@@ -352,7 +355,7 @@
             this.txtMode.PlaceholderText = "";
             this.txtMode.ReadOnly = true;
             this.txtMode.SelectedText = "";
-            this.txtMode.Size = new System.Drawing.Size(306, 34);
+            this.txtMode.Size = new System.Drawing.Size(303, 34);
             this.txtMode.TabIndex = 47;
             this.txtMode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -412,7 +415,7 @@
             this.txtController.PlaceholderText = "";
             this.txtController.ReadOnly = true;
             this.txtController.SelectedText = "";
-            this.txtController.Size = new System.Drawing.Size(306, 34);
+            this.txtController.Size = new System.Drawing.Size(303, 34);
             this.txtController.TabIndex = 52;
             this.txtController.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -551,27 +554,59 @@
             this.btnHelpConfig.ForeColor = System.Drawing.Color.White;
             this.btnHelpConfig.Location = new System.Drawing.Point(171, 468);
             this.btnHelpConfig.Name = "btnHelpConfig";
-            this.btnHelpConfig.Size = new System.Drawing.Size(461, 26);
+            this.btnHelpConfig.Size = new System.Drawing.Size(921, 26);
             this.btnHelpConfig.TabIndex = 62;
             this.btnHelpConfig.Text = "CLICK ME IF YOUR CONFIG NOT CONECTED TO INTERNET";
+            this.btnHelpConfig.Click += new System.EventHandler(this.btnHelpConfig_Click);
             // 
-            // btnRestore
+            // SHelp
             // 
-            this.btnRestore.Animated = true;
-            this.btnRestore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
-            this.btnRestore.BorderColor = System.Drawing.Color.Red;
-            this.btnRestore.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnRestore.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnRestore.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnRestore.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnRestore.FillColor = System.Drawing.Color.Crimson;
-            this.btnRestore.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnRestore.ForeColor = System.Drawing.Color.White;
-            this.btnRestore.Location = new System.Drawing.Point(634, 468);
-            this.btnRestore.Name = "btnRestore";
-            this.btnRestore.Size = new System.Drawing.Size(461, 26);
-            this.btnRestore.TabIndex = 63;
-            this.btnRestore.Text = "RESTORE TO DEFAULT CONFIG";
+            this.SHelp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.SHelp.BorderColor = System.Drawing.Color.White;
+            this.SHelp.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.SHelp.Location = new System.Drawing.Point(12, 270);
+            this.SHelp.Name = "SHelp";
+            this.SHelp.PolygonSkip = 2;
+            this.SHelp.Rotate = 0F;
+            this.SHelp.RoundedRadius = 15;
+            this.SHelp.Shape = Siticone.Desktop.UI.WinForms.Enums.ShapeType.Rounded;
+            this.SHelp.Size = new System.Drawing.Size(1243, 192);
+            this.SHelp.TabIndex = 63;
+            this.SHelp.Text = "SHelp";
+            this.SHelp.Visible = false;
+            this.SHelp.Zoom = 100;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBox1.Location = new System.Drawing.Point(68, 300);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(564, 134);
+            this.textBox1.TabIndex = 64;
+            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.textBox1.Visible = false;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.textBox2.Location = new System.Drawing.Point(634, 300);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox2.Size = new System.Drawing.Size(564, 134);
+            this.textBox2.TabIndex = 65;
+            this.textBox2.Text = resources.GetString("textBox2.Text");
+            this.textBox2.Visible = false;
             // 
             // frmConfig
             // 
@@ -579,7 +614,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(73)))), ((int)(((byte)(99)))));
             this.ClientSize = new System.Drawing.Size(1267, 517);
-            this.Controls.Add(this.btnRestore);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.SHelp);
             this.Controls.Add(this.btnHelpConfig);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -647,6 +684,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Timer tmrList;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnHelpConfig;
-        private Siticone.Desktop.UI.WinForms.SiticoneButton btnRestore;
+        private Siticone.Desktop.UI.WinForms.SiticoneShapes SHelp;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

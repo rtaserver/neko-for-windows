@@ -120,4 +120,54 @@
   <metadata name="tmrList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>STEP BY STEP TO FIX YOUR CONFIG
+  &gt; Edit Your Config First.
+  &gt; Insert / Add / Replace From Side Right
+  &gt; Check Again Your Configuration
+  &gt; If you are confused about how to conconfigure the config. Please use our default config
+  &gt; Or Can you download my Cinfig on github https://github.com/rtaserver/Config-Open-ClashMeta</value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>tun:
+  enable: true
+  stack: system
+  device: utun
+  auto-route: false
+  auto-detect-interface: false
+  dns-hijack:
+  - tcp://any:53
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+ipv6: false
+mode: rule
+log-level: silent
+allow-lan: true
+external-controller: 0.0.0.0:9090
+secret: rizkikotet
+bind-address: "*"
+unified-delay: true
+profile:
+  store-selected: true
+  store-fake-ip: true
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: redir-host
+  listen: 0.0.0.0:7874
+  default-nameserver:
+  - 8.8.8.8
+  - 8.8.4.4
+  - tls://1.1.1.1:853
+  - tls://9.9.9.9:853
+  nameserver:
+  - 8.8.8.8
+  - 1.1.1.1
+  - tls://8.8.8.8:853
+  - https://cloudflare-dns.com/dns-query
+  - quic://dns.adguard.com:784</value>
+  </data>
 </root>

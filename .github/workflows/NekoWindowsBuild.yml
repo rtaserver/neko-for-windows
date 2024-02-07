@@ -62,12 +62,12 @@ jobs:
         tag: ${{ inputs.version }}
         file_glob: true
         body: |
-          # NEKO ${{ inputs.version }}
+          ## NEKO ${{ inputs.version }}
           Simple Clash TUN based Proxy
-          ### Information
+          ## Information
           - Changelog : 
             - ${{ inputs.changelog }}
           - Default Config : 
             - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
-          ### Dependency Requirement
+          ## Dependency Requirement
           - ` Net Framework ` (For Running this Application)

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace NekoForWindows
 {
@@ -148,6 +149,24 @@ namespace NekoForWindows
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnHelpConfig_Click(object sender, EventArgs e)
+        {
+            if (SHelp.Visible == true)
+            {
+                SHelp.Visible = false;
+                textBox1.Visible = false;
+                textBox2.Visible = false;
+                btnHelpConfig.Text = "CLICK ME IF YOUR CONFIG NOT CONECTED TO INTERNET";
+            }
+            else
+            {
+                textBox1.Visible = true;
+                textBox2.Visible = true;
+                SHelp.Visible=true;
+                btnHelpConfig.Text = "Close Me";
+            }
         }
     }
 }
