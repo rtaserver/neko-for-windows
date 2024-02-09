@@ -1,89 +1,81 @@
 name: Build For Windows
 
 on:
-    workflow_dispatch:
-      inputs:
-        version:
-          description: 'Neko version'
-          required: true
-          default: '1.0.0-beta'
-          type: string
-        changelog:
-          description: 'Changelog'
-          required: true
-          default: ''
-          type: string
-  
-jobs: 
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Neko version'
+        required: true
+        default: '1.0.0-beta'
+        type: string
+      changelog:
+        description: 'Changelog'
+        required: true
+        default: ''
+        type: string
+
+jobs:
   build:
     permissions:
       contents: write
     name: Build Neko
     runs-on: windows-2022
-
     steps:
-    - name: Get current date
-      id: date
-      run: echo "date=$(date +'%Y-%m-%d_%H%M%S')" >> $env:GITHUB_OUTPUT
-    - uses: actions/checkout@v3
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d_%H%M%S')" >> $env:GITHUB_OUTPUT
+      - uses: actions/checkout@v3
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v1
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
+      - name: Restore Packages
+        run: nuget restore NekoForWindows.sln
+      - name: Change Build Version
+        run: |
+          sed -i 's/v1\.0-beta/${{ inputs.version }}/g' NekoForWindows/Program.cs
+      - name: Build Solution
+        run: msbuild.exe NekoForWindows.sln /p:Configuration=Release /p:PostBuildEventUseInBuild=false
+      - name: Rename Neko
+        run: mv ./NekoForWindows/bin/Release/NekoForWindows.exe ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
+      - name: Upload Artefact Release
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
+          name: NekoForWindows_release_${{ github.head_ref || github.ref_name }}_${{ steps.date.outputs.date }}
+      - name: Upload release asset
+        id: Upload
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
+          overwrite: true
+          tag: ${{ inputs.version }}
+          file_glob: true
+          body: |
+            ## NEKO ${{ inputs.version }} 
+            Simple Clash TUN based Proxy
+            ## Information
+            - Changelog : 
+              - ${{ inputs.changelog }}
+            - Default Config : 
+              - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
+            ## Dependency Requirement
+            - ` Net Framework ` (For Running this Application)
 
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Setup NuGet
-      uses: nuget/setup-nuget@v1
-
-    - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE
-
-    - name: Restore Packages
-      run: nuget restore NekoForWindows.sln
-
-    - name: Change Build Version
-      run: |
-        sed -i 's/v1\.0-beta/${{ inputs.version }}/g' NekoForWindows/Program.cs
-
-    - name: Build Solution
-      run: msbuild.exe NekoForWindows.sln /p:Configuration=Release /p:PostBuildEventUseInBuild=false
-
-    - name: Rename Neko
-      run: mv ./NekoForWindows/bin/Release/NekoForWindows.exe ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
-
-    - name: Upload Artefact Release
-      uses: actions/upload-artifact@v3
-      with:
-        path: |
-          NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
-        name: NekoForWindows_release_${{ github.head_ref || github.ref_name }}_${{ steps.date.outputs.date }}
-
-    - name: Upload release asset
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
-        overwrite: true
-        tag: ${{ inputs.version }}
-        file_glob: true
-        body: |
-         ## NEKO ${{ inputs.version }} 
-         Simple Clash TUN based Proxy
-         ## Information
-         - Changelog : 
-           - ${{ inputs.changelog }}
-         - Default Config : 
-           - config.yaml : minimal Configs for Neko - Secret : ` rizkikotet `
-         ## Dependency Requirement
-         - ` Net Framework ` (For Running this Application)
-
-    
   build2:
-      name: Build
-      runs-on: ubuntu-latest
-      steps:
-        - name: Send file to Telegram
-          uses: appleboy/telegram-action@master
-          with:
-            to: ${{ secrets.TELEGRAM_CHAT_ID }}
-            token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-            document: ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
-            message: NEKO FOR WINDOWS ${{ inputs.version }}
+    name: RTA
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ needs.build.result == 'success' }}
+    steps:
+      - name: Send file to Telegram
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          document: ./NekoForWindows/bin/Release/NekoForWindows-${{ inputs.version }}.exe
+          message: NEKO FOR WINDOWS ${{ inputs.version }}
