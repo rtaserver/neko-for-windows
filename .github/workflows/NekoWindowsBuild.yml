@@ -72,6 +72,8 @@ jobs:
     needs: build
     if: ${{ needs.build.result == 'success' }}
     steps:
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
       - name: Send file to Telegram
         uses: appleboy/telegram-action@master
         with:
