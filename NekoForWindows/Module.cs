@@ -357,5 +357,23 @@ namespace NekoForWindows
             colorIndex = (colorIndex + 1) % rainbowColors.Length;
         }
 
+        public static void CheckAppRunning()
+        {
+            // Define a unique name for the mutex
+            string mutexName = "NekoForWindows";
+
+            // Attempt to create a named mutex
+            using (Mutex mutex = new Mutex(true, mutexName, out bool createdNew))
+            {
+                // Check if the mutex was successfully created
+                if (!createdNew)
+                {
+                    // Another instance is already running, so exit
+                    MessageBox.Show("Another instance of the program is already running.","Neko For Windows",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    Application.Exit();
+                }
+            }
+        }
+
     }
 }

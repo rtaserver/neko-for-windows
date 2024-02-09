@@ -24,6 +24,7 @@ namespace NekoForWindows
         [STAThread]
         static void Main()
         {
+            Module.CheckAppRunning();
 
             const string _json = @"NekoForWindows.Newtonsoft.Json.dll";
             const string _Siticone = @"NekoForWindows.Siticone.Desktop.UI.dll";
