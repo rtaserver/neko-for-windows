@@ -375,5 +375,57 @@ namespace NekoForWindows
             }
         }
 
+        public static Color GetFormBackColor(string argb)
+        {
+            // Split the string by commas
+            string[] parts = argb.Split(',');
+
+            // Ensure we have exactly 3 parts
+            if (parts.Length != 3)
+            {
+                throw new ArgumentException("Invalid ARGB format. It should be three comma-separated integers.");
+            }
+
+            // Parse each part as integer
+            int alpha = 255; // default alpha value
+            int red = int.Parse(parts[0].Trim());
+            int green = int.Parse(parts[1].Trim());
+            int blue = int.Parse(parts[2].Trim());
+
+            // Create a color object
+            Color color = Color.FromArgb(alpha, red, green, blue);
+
+            // Set the back color of the form
+            return color;
+        }
+        public static void SetFormBackColor(Form frm,string argb)
+        {
+            // Split the string by commas
+            string[] parts = argb.Split(',');
+
+            // Ensure we have exactly 3 parts
+            if (parts.Length != 3)
+            {
+                throw new ArgumentException("Invalid ARGB format. It should be three comma-separated integers.");
+            }
+
+            // Parse each part as integer
+            int alpha = 255; // default alpha value
+            int red = int.Parse(parts[0].Trim());
+            int green = int.Parse(parts[1].Trim());
+            int blue = int.Parse(parts[2].Trim());
+
+            // Create a color object
+            Color color = Color.FromArgb(alpha, red, green, blue);
+
+            // Set the back color of the form
+            frm.BackColor = color;
+        }
+
+        public static string GetRGBString(Color color)
+        {
+            return $"{color.R}, {color.G}, {color.B}";
+        }
+
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -349,7 +350,25 @@ namespace NekoForWindows
 
         private void frmSettings_Load(object sender, EventArgs e)
         {
-   
+
+        }
+
+        public Color GetColorPicker()
+        {
+            return colorPicker1.Color;
+        }
+
+        public void SetColorPicker(Color color)
+        {
+            colorPicker1.Color = color;
+        }
+
+        private void btnApplyTheme_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> config = ReadWriteConfig.ReadConfigFile(ReadWriteConfig.Temp);
+            ReadWriteConfig.ADDUPDATE(config, "BackColor", Module.GetRGBString(colorPicker1.Color));
+            ReadWriteConfig.WriteConfigFile(ReadWriteConfig.Temp, config);
+            MessageBox.Show("Theme Successfully Applied","Neko For Windows",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
     }
 }

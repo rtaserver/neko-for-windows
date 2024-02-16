@@ -94,6 +94,8 @@ namespace NekoForWindows
             }
             NekoLogs.Add($"[ {CrtTime} ] Installing Default Config");
             NekoLogs.Add($"[ {CrtTime} ] All Secure");
+            frmSplash splash = new frmSplash();
+            splash.Close();
         }
 
 

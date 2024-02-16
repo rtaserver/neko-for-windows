@@ -113,6 +113,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorHelper.cs" />
+    <Compile Include="Controller\ColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EmbadResource.cs" />
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
@@ -144,6 +148,12 @@
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSplash.Designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
     <Compile Include="Module.cs" />
     <Compile Include="Neko.cs" />
     <Compile Include="Program.cs" />
@@ -169,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -220,6 +233,9 @@
     <EmbeddedResource Include="Siticone.Desktop.UI.dll" />
     <EmbeddedResource Include="System.Buffers.dll" />
     <EmbeddedResource Include="System.Numerics.Vectors.dll" />
+    <EmbeddedResource Include="UpdateForm.resx">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="YamlDotNet.dll" />
   </ItemGroup>
   <ItemGroup>

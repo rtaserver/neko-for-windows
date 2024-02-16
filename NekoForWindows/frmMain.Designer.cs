@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.siticoneShadowForm1 = new Siticone.Desktop.UI.WinForms.SiticoneShadowForm(this.components);
             this.siticoneDragControl1 = new Siticone.Desktop.UI.WinForms.SiticoneDragControl(this.components);
-            this.siticonePictureBox1 = new Siticone.Desktop.UI.WinForms.SiticonePictureBox();
             this.btnClose = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             this.btnMinimize = new Siticone.Desktop.UI.WinForms.SiticoneControlBox();
             this.btnHome = new Siticone.Desktop.UI.WinForms.SiticoneButton();
@@ -43,6 +42,10 @@
             this.siticoneShapes2 = new Siticone.Desktop.UI.WinForms.SiticoneShapes();
             this.panel1 = new System.Windows.Forms.Panel();
             this.siticoneBorderlessForm1 = new Siticone.Desktop.UI.WinForms.SiticoneBorderlessForm(this.components);
+            this.lblNekoVersion = new System.Windows.Forms.Label();
+            this.lblCoreVersion = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.siticonePictureBox1 = new Siticone.Desktop.UI.WinForms.SiticonePictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.siticonePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,17 +54,6 @@
             this.siticoneDragControl1.DockIndicatorTransparencyValue = 0.6D;
             this.siticoneDragControl1.TargetControl = this;
             this.siticoneDragControl1.UseTransparentDrag = true;
-            // 
-            // siticonePictureBox1
-            // 
-            this.siticonePictureBox1.Image = global::NekoForWindows.Properties.Resources.neko__1_;
-            this.siticonePictureBox1.ImageRotate = 0F;
-            this.siticonePictureBox1.Location = new System.Drawing.Point(487, 26);
-            this.siticonePictureBox1.Name = "siticonePictureBox1";
-            this.siticonePictureBox1.Size = new System.Drawing.Size(458, 162);
-            this.siticonePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.siticonePictureBox1.TabIndex = 0;
-            this.siticonePictureBox1.TabStop = false;
             // 
             // btnClose
             // 
@@ -197,12 +189,52 @@
             this.siticoneBorderlessForm1.ResizeForm = false;
             this.siticoneBorderlessForm1.TransparentWhileDrag = true;
             // 
+            // lblNekoVersion
+            // 
+            this.lblNekoVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNekoVersion.ForeColor = System.Drawing.Color.White;
+            this.lblNekoVersion.Location = new System.Drawing.Point(230, 811);
+            this.lblNekoVersion.Name = "lblNekoVersion";
+            this.lblNekoVersion.Size = new System.Drawing.Size(483, 23);
+            this.lblNekoVersion.TabIndex = 30;
+            this.lblNekoVersion.Text = "Neko Version : ";
+            this.lblNekoVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCoreVersion
+            // 
+            this.lblCoreVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCoreVersion.ForeColor = System.Drawing.Color.White;
+            this.lblCoreVersion.Location = new System.Drawing.Point(719, 811);
+            this.lblCoreVersion.Name = "lblCoreVersion";
+            this.lblCoreVersion.Size = new System.Drawing.Size(483, 23);
+            this.lblCoreVersion.TabIndex = 31;
+            this.lblCoreVersion.Text = "Core Version : ";
+            this.lblCoreVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // siticonePictureBox1
+            // 
+            this.siticonePictureBox1.Image = global::NekoForWindows.Properties.Resources.neko__1_;
+            this.siticonePictureBox1.ImageRotate = 0F;
+            this.siticonePictureBox1.Location = new System.Drawing.Point(487, 26);
+            this.siticonePictureBox1.Name = "siticonePictureBox1";
+            this.siticonePictureBox1.Size = new System.Drawing.Size(458, 162);
+            this.siticonePictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.siticonePictureBox1.TabIndex = 0;
+            this.siticonePictureBox1.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(73)))), ((int)(((byte)(99)))));
-            this.ClientSize = new System.Drawing.Size(1433, 829);
+            this.ClientSize = new System.Drawing.Size(1433, 843);
+            this.Controls.Add(this.lblCoreVersion);
+            this.Controls.Add(this.lblNekoVersion);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnAbout);
@@ -240,6 +272,9 @@
         private Siticone.Desktop.UI.WinForms.SiticoneShapes siticoneShapes2;
         private System.Windows.Forms.Panel panel1;
         private Siticone.Desktop.UI.WinForms.SiticoneBorderlessForm siticoneBorderlessForm1;
+        private System.Windows.Forms.Label lblCoreVersion;
+        private System.Windows.Forms.Label lblNekoVersion;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

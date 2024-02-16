@@ -33,12 +33,16 @@
             this.btnCheckClient = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.btnCheckCore = new Siticone.Desktop.UI.WinForms.SiticoneButton();
             this.PGBar = new Siticone.Desktop.UI.WinForms.SiticoneProgressBar();
+            this.siticoneShapes2 = new Siticone.Desktop.UI.WinForms.SiticoneShapes();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnApplyTheme = new Siticone.Desktop.UI.WinForms.SiticoneButton();
+            this.colorPicker1 = new NekoForWindows.Controls.ColorPicker();
             this.SuspendLayout();
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(73)))), ((int)(((byte)(99)))));
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Arial", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(568, 9);
@@ -115,12 +119,73 @@
             this.PGBar.Value = 50;
             this.PGBar.Visible = false;
             // 
+            // siticoneShapes2
+            // 
+            this.siticoneShapes2.BackColor = System.Drawing.Color.Transparent;
+            this.siticoneShapes2.BorderColor = System.Drawing.Color.White;
+            this.siticoneShapes2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.siticoneShapes2.Location = new System.Drawing.Point(0, 166);
+            this.siticoneShapes2.Name = "siticoneShapes2";
+            this.siticoneShapes2.PolygonSkip = 2;
+            this.siticoneShapes2.Rotate = 0F;
+            this.siticoneShapes2.RoundedRadius = 15;
+            this.siticoneShapes2.Shape = Siticone.Desktop.UI.WinForms.Enums.ShapeType.Rounded;
+            this.siticoneShapes2.Size = new System.Drawing.Size(1267, 302);
+            this.siticoneShapes2.TabIndex = 72;
+            this.siticoneShapes2.Text = "siticoneShapes2";
+            this.siticoneShapes2.Zoom = 100;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.label3.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(558, 175);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(151, 22);
+            this.label3.TabIndex = 78;
+            this.label3.Text = "Change Theme";
+            // 
+            // btnApplyTheme
+            // 
+            this.btnApplyTheme.Animated = true;
+            this.btnApplyTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.btnApplyTheme.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(135)))), ((int)(((byte)(84)))));
+            this.btnApplyTheme.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnApplyTheme.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnApplyTheme.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnApplyTheme.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnApplyTheme.FillColor = System.Drawing.Color.SlateBlue;
+            this.btnApplyTheme.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApplyTheme.ForeColor = System.Drawing.Color.White;
+            this.btnApplyTheme.Location = new System.Drawing.Point(438, 403);
+            this.btnApplyTheme.Name = "btnApplyTheme";
+            this.btnApplyTheme.Size = new System.Drawing.Size(390, 44);
+            this.btnApplyTheme.TabIndex = 80;
+            this.btnApplyTheme.Text = "Apply Theme";
+            this.btnApplyTheme.Click += new System.EventHandler(this.btnApplyTheme_Click);
+            // 
+            // colorPicker1
+            // 
+            this.colorPicker1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(84)))), ((int)(((byte)(128)))));
+            this.colorPicker1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorPicker1.Location = new System.Drawing.Point(528, 210);
+            this.colorPicker1.Name = "colorPicker1";
+            this.colorPicker1.Size = new System.Drawing.Size(210, 187);
+            this.colorPicker1.TabIndex = 79;
+            this.colorPicker1.Text = "colorPicker1";
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(73)))), ((int)(((byte)(99)))));
             this.ClientSize = new System.Drawing.Size(1267, 517);
+            this.Controls.Add(this.btnApplyTheme);
+            this.Controls.Add(this.colorPicker1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.siticoneShapes2);
             this.Controls.Add(this.PGBar);
             this.Controls.Add(this.btnCheckCore);
             this.Controls.Add(this.btnCheckClient);
@@ -142,5 +207,9 @@
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnCheckClient;
         private Siticone.Desktop.UI.WinForms.SiticoneButton btnCheckCore;
         private Siticone.Desktop.UI.WinForms.SiticoneProgressBar PGBar;
+        private Siticone.Desktop.UI.WinForms.SiticoneShapes siticoneShapes2;
+        private System.Windows.Forms.Label label3;
+        private Controls.ColorPicker colorPicker1;
+        private Siticone.Desktop.UI.WinForms.SiticoneButton btnApplyTheme;
     }
 }

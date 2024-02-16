@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Configuration;
+using System.Runtime.CompilerServices;
+using System.Drawing;
 
 namespace NekoForWindows
 {
@@ -47,6 +49,7 @@ namespace NekoForWindows
                 ReadWriteConfig.ADDUPDATE(config, "FirstRun", "true");
                 ReadWriteConfig.ADDUPDATE(config, "ClientVersion", Version);
                 ReadWriteConfig.ADDUPDATE(config, "CoreVersion", CoreVersion);
+                ReadWriteConfig.ADDUPDATE(config, "BackColor", "66, 73, 99");
                 ReadWriteConfig.WriteConfigFile(ReadWriteConfig.Temp, config);
             }
 
@@ -56,7 +59,7 @@ namespace NekoForWindows
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmMain());
 
-
+            
         }
         private static Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {

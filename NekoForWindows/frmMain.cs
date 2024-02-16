@@ -17,6 +17,7 @@ using System.IO.Compression;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Reflection;
+using NekoForWindows.Controls;
 
 
 namespace NekoForWindows
@@ -32,11 +33,20 @@ namespace NekoForWindows
 
         public frmMain()
         {
+            using (var splashScreen = new frmSplash())
+            {
+                splashScreen.Show(); // This will block until the splash screen is closed
+            }
             InitializeComponent();
+
+            
             FAbout = new frmAbout();
             FConfig = new frmConfig();
             FHome = new frmHome();
             FSettings = new frmSettings();
+
+            Dictionary<string, string> config = ReadWriteConfig.ReadConfigFile(ReadWriteConfig.Temp);
+            FSettings.SetColorPicker(Module.GetFormBackColor(ReadWriteConfig.GetValueForKey(config, "BackColor")));
 
             btnHome.PerformClick();
         }
@@ -45,7 +55,9 @@ namespace NekoForWindows
         {
             Dictionary<string, string> config = ReadWriteConfig.ReadConfigFile(ReadWriteConfig.Temp);
             FAbout.SetClientVersion(ReadWriteConfig.GetValueForKey(config, "ClientVersion"));
+            lblNekoVersion.Text = "Neko Version : " + ReadWriteConfig.GetValueForKey(config, "ClientVersion");
             FAbout.SetCoreVersion(ReadWriteConfig.GetValueForKey(config, "CoreVersion"));
+            lblCoreVersion.Text = "Core Version : " + ReadWriteConfig.GetValueForKey(config, "CoreVersion");
             FSettings.CheckForUpdate(true);
         }
 
@@ -162,6 +174,19 @@ namespace NekoForWindows
                 Application.Exit();
             }
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                this.BackColor = FSettings.GetColorPicker();
+                FAbout.BackColor = FSettings.GetColorPicker();
+                FConfig.BackColor = FSettings.GetColorPicker();
+                FHome.BackColor = FSettings.GetColorPicker();
+                FSettings.BackColor = FSettings.GetColorPicker();
+            }
+            catch { }
         }
     }
 }
